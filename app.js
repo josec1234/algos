@@ -11,6 +11,7 @@ function createRandomArray() {
   const arraySize = document.getElementById("size_input").value;
   let randomArray = [];
   let ol = document.createElement("ol");
+  ol.id = "array_ol";
   for (let i = 0; i < arraySize; i++) {
     let randomNum = Math.floor(Math.random() * maxValue)
     randomArray.push(randomNum);
@@ -26,19 +27,26 @@ function createRandomArray() {
 
 
 function sortArray() {
-  console.log("SORTARRAY!!!!!!!!");
-  console.log(randomArray);
   // Bubble sort
-  console.log(randomArray);
   for (let i = 0; i < maxValue; i++) {
     for (let j = 0; j < maxValue -i -1; j++) {
       if (randomArray[j] > randomArray[j + 1]) {
         let aux = randomArray[j];
         randomArray[j] = randomArray[j+1];
         randomArray[j+1] = aux; 
+        updateDOM(j);
       }
     }
   }
-  console.log(randomArray);
+}
+
+function updateDOM(j) {
+  let ol = document.getElementById("array_ol"); 
+  let ele1 = ol.getElementsByTagName('li')[j];
+  let ele2 = ol.getElementsByTagName('li')[j+1];
+  let ele1Val = ele1.style.width;
+  let ele2Val = ele2.style.width;
+  ele1.style.width = ele2Val;
+  ele2.style.width = ele1Val;
 }
 
