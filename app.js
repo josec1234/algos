@@ -44,9 +44,12 @@ function updateDOM(j) {
   let ol = document.getElementById("array_ol"); 
   let ele1 = ol.getElementsByTagName('li')[j];
   let ele2 = ol.getElementsByTagName('li')[j+1];
-  let ele1Val = ele1.style.width;
-  let ele2Val = ele2.style.width;
-  ele1.style.width = ele2Val;
-  ele2.style.width = ele1Val;
+  let aux;
+  aux = ele1.textContent;
+  ele1.textContent = ele2.textContent;
+  ele2.textContent = aux;
+  aux = ele1.style.width;
+  ele1.style.width = ele2.style.width;
+  ele2.style.width = aux;
 }
 
